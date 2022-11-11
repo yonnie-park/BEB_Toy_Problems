@@ -1,36 +1,15 @@
 const insertionSort = function (arr, callback) {
   // TODO: 여기에 코드를 작성합니다.
-  if(!callback){
-    for(let i=1; i<arr.length; i++){
-      let curr=arr[i]
-      let j
-      for(j=i-1; j>=0&&arr[j]>curr; j--){
-        arr[j+1]=arr[j]
-      }
-      arr[j+1]=curr
-    }
-    return arr
-  }
-  else {
-    let output=[]
-    let tmp
-    for(let i=0; i<arr.length; i++){
-      arr[i]=[arr[i],callback(arr[i])]
-    }
-    for(let i=0; i<arr.length; i++){
-      for(let j=0; j<arr.length-i-1; j++){
-        if(arr[j][1]>arr[j+1][1]){
-          tmp=arr[j]
-          arr[j]=arr[j+1]
-          arr[j+1]=tmp
-        }
-      }
-    }
-    for(let i=0; i<arr.length; i++){
-      output.push(arr[i][0])
-    }
-    return output
-  }
 
-
+  if(!callback)callback = (ele)=>{return ele};
+  for(let i=1; i<arr.length; i++){
+    let curr= arr[i]
+    let j;
+    for(j = i-1; j>=0 &&callback(arr[j])>callback(curr); j--){
+      arr[j+1]=arr[j]
+    }
+    arr[j+1]=curr;
+  }
+  return arr
+  
 };
