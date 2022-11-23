@@ -13,3 +13,6 @@ const insertionSort = function (arr, callback) {
   return arr
   
 };
+
+let output = insertionSort([3, 1, 21,11,4]);
+console.log(output)

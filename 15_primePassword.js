@@ -1,10 +1,12 @@
 const primePassword = (curPwd, newPwd) => {
-    // TODO: 여기에 코드를 작성합니다.
-    let count=0
-    curPwd=String(curPwd).split("")
-  
+    if(curPwd===newPwd) return 0
+
+    let cnt=0
+
+    curPwd=String(curPwd).split('')
+
     function isPrime(arr) { //helper function to check if prime
-        let num=Number(arr.join(""))
+        let num=Number(arr.join(''))
         for(let i = 2; i <= Math.floor(Math.sqrt(num)); i++){ //제곱근보다 큰수까지 돌릴필요 없음
             if(num % i === 0){ //divisible at lease once
                 return false; 
@@ -12,30 +14,15 @@ const primePassword = (curPwd, newPwd) => {
         }
         return true; 
     }
- 
-    function bfs(curPwd,newPwd){ //helper function for bfs
-      //queue
-      let queue=[]
-      let head=0
-      let tail=0
-  
-      function enqueue(){
 
-      }
-      //visited
-      let visited=new Array(10000).fill(0)
-      visited[curPwd]=1
-           
-  
-  
-      //count++
-    }
-  
-  
-    if (isPrime(curPwd)) return 0 //already prime
-    else{
-      bfs(curPwd)
-      return count
+    function bfs(curPwd,newPwd){
+        let queue=[]
+        let visited=new Array(10000).fill(0)
+        visited[curPwd]=1
+
+        while(queue.length!=0){
+
+        }
     }
 };
 
