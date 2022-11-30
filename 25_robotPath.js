@@ -1,30 +1,36 @@
 const robotPath = function (room, src, dst) {
-    let visited = Array(room.length).fill(0).map(()=>[]);
-    visited[src[0]][src[1]] = 1;
-    let q = [[...src, 1]];
+  let path=[]
+  let result=[]
+  let dx=[-1, 0, 1, 0]
+  let dy=[0, 1, 0, -1]
 
-    const direction = [
-        [0,1],
-        [0,-1],
-        [1,0],
-        [-1,0]
-      ];
+  function DFS(x,y){
+    if(x===dst[0] && y===dst[1]) {
+      result.push([...path])   
+    }
+    else{
+      for(let k=0; k<4; k++){
+        let nx=x+dx[k]
+        let ny=y+dy[k]
 
-    while(q.length !== 0) {
-      let result = q.shift();  
-      let [y, x, cnt] = result;
-      for(let i = 0; i < 4; i++) {
-        let dy = y + direction[i][0];
-        let dx = x + direction[i][1];
-        if(dx < 0 || dy < 0 || dx > room[0].length - 1 || dy > room.length - 1) continue;
-        if(room[dy][dx] === 1) continue;
-        if(visited[dy][dx]) continue;
-        visited[dy][dx] = 1;
-        q.push([dy, dx, cnt + 1]);
-        if(dy === dst[0] && dx === dst[1]) return result[2];
+        if(nx>=0 && nx<room.length && ny>=0 && ny<room[0].length && room[nx][ny]==0){
+          room[nx][ny]=1
+          path.push(1)
+          DFS(nx, ny);
+          room[nx][ny]=0
+          path.pop()
+        }
       }
     }
-  };
+  }
+  room[src[0]][src[1]]=1
+  DFS(src[0],src[1])
+  let ans=[]
+  for(let i=0; i<result.length; i++){
+    ans.push(result[i].length)
+  }
+  return Math.min(...ans)
+};
   let room = [
     [0, 0, 0, 0, 0, 0],
     [0, 1, 1, 0, 1, 0],
