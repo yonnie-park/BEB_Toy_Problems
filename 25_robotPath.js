@@ -31,14 +31,14 @@ const robotPath = function (room, src, dst) {
   }
   return Math.min(...ans)
 };
-  let room = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 1, 1, 0, 1, 0],
-    [0, 1, 0, 0, 0, 0],
-    [0, 0, 1, 1, 1, 0],
-    [1, 0, 0, 0, 0, 0],
-  ];
-  let src = [4, 2];
-  let dst = [2, 2];
+const room = [
+  [0, 0, 0, 0, 0, 0],
+  [0, 1, 1, 0, 1, 0],
+  [0, 1, 0, 0, 0, 0],
+  [0, 0, 1, 1, 1, 0],
+  [1, 0, 0, 0, 0, 0],
+];
+const src = [4, 2];
+const dst = [2, 2];
   let output = robotPath(room, src, dst);
   console.log(output);
