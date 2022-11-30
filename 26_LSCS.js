@@ -10,7 +10,5 @@ const LSCS = function (arr) {
     return max
 };
 
-console.log(LSCS([1, 2, 3]))
-console.log(LSCS([1, 2, 3, -4]))
-console.log(LSCS([1, 2, 3, -4, 5]))
-console.log(LSCS([10, -11, 11]))
+
+console.log(LSCS([-3, 1, 2, 3, -4, 5]))

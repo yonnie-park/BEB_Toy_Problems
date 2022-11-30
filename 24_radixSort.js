@@ -18,16 +18,47 @@ function longest(numArr){
     return max
 }
 
-// 음수가 안돌아간다.. 따로 배열 만들어서 해야될듯
 function radixSort(arr){
     let max = longest(arr)
+    let negativeArr=[]
+    let negNums=[]
+    let result=[]
+    
+    //negative
+    for(let i=arr.length-1; i>=0; i--){ //make positive array with negative nums
+        if(arr[i]<0) {
+            negativeArr.push(arr[i]*-1)
+            arr.splice(i,1)
+        }
+    }
+
+    let maxNeg = longest(negativeArr)
+
+    for(let k=0; k<maxNeg; k++){
+        let digitArrNeg=Array.from({length: 10}, () => [])
+        for(let i=0; i<negativeArr.length; i++){
+            let digit=getDigit(negativeArr[i],k)
+            digitArrNeg[digit].push(negativeArr[i])
+        }
+        negativeArr=[].concat(...digitArrNeg)
+    }
+    for(let i=negativeArr.length-1; i>=0; i--){
+        negNums.push(negativeArr[i]*-1)
+    }
+    result=negNums.concat(...arr)
+
+    //positive
     for(let k=0; k<max; k++){
         let digitArr=Array.from({length: 10}, () => [])
+        
         for(let i=0; i<arr.length; i++){
             let digit=getDigit(arr[i],k)
             digitArr[digit].push(arr[i])
-        }
+        }        
         arr=[].concat(...digitArr)
     }
-    return arr
+
+    return result
 }
+let output = radixSort([-11, -1231, -1231231, -12]);
+console.log(output);
