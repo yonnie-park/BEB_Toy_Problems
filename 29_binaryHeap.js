@@ -28,10 +28,10 @@ function swap(idx1, idx2, arr) {
     heap.push(item)
     let currentIdx=heap.length-1
     let parentIdx=getParentIdx(currentIdx)
-    while(parentIdx>0 && heap[currentIdx]>heap[parentIdx]){
+    while(parentIdx>=0 && heap[currentIdx]>heap[parentIdx]){
         swap(currentIdx, parentIdx, heap)
         currentIdx=parentIdx
-        parentIdx-getParentIdx(currentIdx)
+        parentIdx=getParentIdx(currentIdx)
     }
     return heap
   }
