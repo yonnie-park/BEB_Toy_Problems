@@ -1,5 +1,16 @@
 const decompression = function(image) {
-    // TODO: 여기에 코드를 작성합니다.
+    /* function allElementsEqual(arr) {
+        const firstElement = arr[0][0];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] !== firstElement) {
+                    return "X";
+                }
+            }
+        }
+        return firstElement;
+    }*/
+
     function dec(image) {
         if (image.every((row) => row.every((cell) => cell === 1))) return 1
         if (image.every((row) => row.every((cell) => cell === 0))) return 0
