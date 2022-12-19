@@ -1,5 +1,5 @@
 const decompression = function(image) {
-    /* function allElementsEqual(arr) {
+    function dec(arr) {
         const firstElement = arr[0][0];
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < arr[i].length; j++) {
@@ -9,12 +9,6 @@ const decompression = function(image) {
             }
         }
         return firstElement;
-    }*/
-
-    function dec(image) {
-        if (image.every((row) => row.every((cell) => cell === 1))) return 1
-        if (image.every((row) => row.every((cell) => cell === 0))) return 0
-        else return "X"
     }
 
     let result = ""
