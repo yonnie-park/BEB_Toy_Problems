@@ -11,6 +11,7 @@ const canAllocate = (mid, jobs, workersNum) => {
             if (cnt > workersNum) return 0;
         }
     }
+
     return 1;
 }
 
